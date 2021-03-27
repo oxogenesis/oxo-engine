@@ -43,6 +43,7 @@ const TxResultCode = {
   // OfferCreate
   'trcPayISNotTrust': 'trcPayISNotTrust',
   'trcGetISNotTrust': 'trcGetISNotTrust',
+  'trcPaySameAsGet': 'trcPaySameAsGet',
 
   // OfferCancel
   'trcOfferNotExist': 'trcOfferNotExist',
