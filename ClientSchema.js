@@ -365,15 +365,15 @@ const InquireAccountRootSchema =
   ]
 }
 
-const InquireIssuerSchema =
+const InquireIssuerSubjectSchema =
 {
   "type": "object",
   "properties": {
     "Inquire": {
       "type": "string",
-      "pattern": "^Issuer$"
+      "pattern": "^IssuerSubject$"
     },
-    "Address": {
+    "Issuer": {
       "type": "string"
     },
     "Subject": {
@@ -391,7 +391,7 @@ const InquireIssuerSchema =
   },
   "required": [
     "Inquire",
-    "Address",
+    "Issuer",
     "Subject",
     "Timestamp",
     "PublicKey",
@@ -546,7 +546,7 @@ const InquireUserSchema =
 
 const vInquireAccountRootSchema = ajv.compile(InquireAccountRootSchema)
 const vInquireAccountSchema = ajv.compile(InquireAccountSchema)
-const vInquireIssuerSchema = ajv.compile(InquireIssuerSchema)
+const vInquireIssuerSubjectSchema = ajv.compile(InquireIssuerSubjectSchema)
 const vInquireHolderSchema = ajv.compile(InquireHolderSchema)
 const vInquireOfferSchema = ajv.compile(InquireOfferSchema)
 const vInquireOfferBookSchema = ajv.compile(InquireOfferBookSchema)
@@ -719,7 +719,7 @@ function checkClientSchema(strJson) {
   if (typeof strJson == "string") {
     try {
       let json = JSON.parse(strJson)
-      if (vInquireAccountRootSchema(json) || vInquireAccountSchema(json) || vInquireIssuerSchema(json) || vInquireHolderSchema(json) || vInquireOfferSchema(json) || vInquireOfferBookSchema(json) || vInquireUserSchema(json) || vPaymentSchema(json) || vSubjectProclaimSchema(json) || vSubjectRevokeSchema(json) || vTrustCreateSchema(json) || vTrustRemoveSchema(json) || vOfferCreateSchema(json) || vOfferCancelSchema(json) || vDeclareSchema(json) || vVerifySchema(json) || vBackupTxSchema(json) || vVerifyUserSchema(json) || vAdminAuthSchema(json)) {
+      if (vInquireAccountRootSchema(json) || vInquireAccountSchema(json) || vInquireIssuerSubjectSchema(json) || vInquireHolderSchema(json) || vInquireOfferSchema(json) || vInquireOfferBookSchema(json) || vInquireUserSchema(json) || vPaymentSchema(json) || vSubjectProclaimSchema(json) || vSubjectRevokeSchema(json) || vTrustCreateSchema(json) || vTrustRemoveSchema(json) || vOfferCreateSchema(json) || vOfferCancelSchema(json) || vDeclareSchema(json) || vVerifySchema(json) || vBackupTxSchema(json) || vVerifyUserSchema(json) || vAdminAuthSchema(json)) {
         return json
       } else {
         return false
